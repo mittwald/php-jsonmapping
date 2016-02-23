@@ -113,6 +113,7 @@ $advancedCustomerMapping = new ObjectMapping([
 
 $mergedCustomerMapping = $customerMapping->merge($advancedCustomerMapping);
 $mergedCustomerJson = $mergedCustomerMapping->map($customer);
+```
 
 ### Putting it all together
 
