@@ -14,7 +14,7 @@ class MergeMapping extends ObjectMapping
      *
      * @param ObjectMapping[] ...$innerMappings
      */
-    public function __construct(ObjectMapping ...$innerMappings)
+    public function __construct(...$innerMappings)
     {
         $this->innerMappings = $innerMappings;
     }
