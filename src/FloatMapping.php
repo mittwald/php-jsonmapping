@@ -3,12 +3,11 @@ namespace Mw\JsonMapping;
 
 /**
  * Class FloatMapping
+ *
  * @package Mw\JsonMapping
  */
 class FloatMapping extends AbstractMapping
 {
-
-
 
     /**
      * @param $value

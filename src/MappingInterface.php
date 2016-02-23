@@ -10,12 +10,9 @@ namespace Mw\JsonMapping;
 interface MappingInterface
 {
 
-
-
     /**
      * @param mixed $value
      * @return mixed
      */
     public function map($value);
-
 }

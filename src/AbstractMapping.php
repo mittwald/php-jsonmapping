@@ -3,12 +3,11 @@ namespace Mw\JsonMapping;
 
 /**
  * Abstract class AbstractMapping
+ *
  * @package Mw\JsonMapping
  */
 abstract class AbstractMapping implements MappingInterface
 {
-
-
 
     /**
      * @codeCoverageIgnore
@@ -19,5 +18,4 @@ abstract class AbstractMapping implements MappingInterface
     {
         return new MappingChain($this, $next);
     }
-
 }

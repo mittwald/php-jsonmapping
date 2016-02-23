@@ -3,12 +3,11 @@ namespace Mw\JsonMapping;
 
 /**
  * Class IntegerMapping
+ *
  * @package Mw\JsonMapping
  */
 class IntegerMapping extends AbstractMapping
 {
-
-
 
     /**
      * @param $value
@@ -18,5 +17,4 @@ class IntegerMapping extends AbstractMapping
     {
         return intval($value);
     }
-
 }
