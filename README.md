@@ -74,10 +74,10 @@ This can also be used to map sub-objects:
 ```php
 $customerMapping = new ObjectMapping([
   'customerNumber' => (new ObjectGetterMapping('getCustomernumber'))->then(new IntegerMapping()),
-  'address' => (new ObjectGetterMapping('getAddress'))->then(new ObjectMapping([
-    'street' => new ObjectGetterMapping('getAddress'),
+  'address'        => (new ObjectGetterMapping('getAddress'))->then(new ObjectMapping([
+    'street'      => new ObjectGetterMapping('getAddress'),
     'housenumber' => new ObjectGetterMapping('getHouseNumber'),
-    'country' => new ObjectGetterMapping('getCountry')
+    'country'     => new ObjectGetterMapping('getCountry')
   ]))
 ]);
 ```
@@ -89,7 +89,7 @@ Object mappings can be filtered for specific properties:
 ```php
 $customerMapping = new ObjectMapping([
   'customerNumber' => new ObjectGetterMapping('getCustomernumber'),
-  'firstName' => new ObjectGetterMapping('getFirstName')
+  'firstName'      => new ObjectGetterMapping('getFirstName')
 ]);
 
 $filteredCustomerMapping = $customerMapping->filter('firstName');
@@ -102,14 +102,14 @@ Also, object mappings can be merged together:
 ```php
 $customerMapping = new ObjectMapping([
   'customerNumber' => new ObjectGetterMapping('getCustomernumber'),
-  'firstName' => new ObjectGetterMapping('getFirstName')
+  'firstName'      => new ObjectGetterMapping('getFirstName')
 ]);
 
 $advancedCustomerMapping = new ObjectMapping([
   'address' => (new ObjectGetterMapping('getAddress'))->then(new ObjectMapping([
-    'street' => new ObjectGetterMapping('getAddress'),
+    'street'      => new ObjectGetterMapping('getAddress'),
     'housenumber' => new ObjectGetterMapping('getHouseNumber'),
-    'country' => new ObjectGetterMapping('getCountry')
+    'country'     => new ObjectGetterMapping('getCountry')
   ]))
 ]);
 
@@ -135,9 +135,9 @@ $customerMapping = new ObjectMapping([
 
 $addressCustomerMapping = new ObjectMapping([
   'address' => (new ObjectGetterMapping('getAddress'))->then(new ObjectMapping([
-    'street' => new ObjectGetterMapping('getAddress'),
+    'street'      => new ObjectGetterMapping('getAddress'),
     'housenumber' => new ObjectGetterMapping('getHouseNumber'),
-    'country' => new ObjectGetterMapping('getCountry')
+    'country'     => new ObjectGetterMapping('getCountry')
   ]))
 ]);
 
