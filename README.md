@@ -38,6 +38,17 @@ $customerMapping = new ObjectMapping([
 $customerJson = $customerMapping->map($customer);
 ```
 
+Alternatively, use the `Mw\JsonMapping\MappingBuilder` for more concise expressions:
+
+```php
+$m = new MappingBuilder();
+
+$customerMapping = $m->struct([
+  'customerNumber' => $m->getter('getCustomernumber'),
+  'firstName'      => $m->getter('getFirstName'),
+]);
+```
+
 On the first glance, this code is similar to the following
 
 ```php
@@ -82,6 +93,19 @@ $customerMapping = new ObjectMapping([
 ]);
 ```
 
+Alternatively, using the `MappingBuilder`:
+
+```php
+$customerMapping = $m->struct([
+  'customerNumber' => $m->getter('getCustomernumber')->then($m->toInteger()),
+  'address'        => $m->getterAndStruct('getAddress', [
+    'street'      => $m->getter('getAddress'),
+    'housenumber' => $m->getter('getHouseNumber'),
+    'country'     => $m->getter('getCountry')
+  ])
+]);
+```
+
 ### Filtering
 
 Object mappings can be filtered for specific properties:
@@ -123,26 +147,27 @@ Find a complete example of all available mappings below; also, the
 [examples/](examples/) folder contains more examples:.
 
 ```php
-$customerMapping = new ObjectMapping([
-  'customerNumber' => (new ObjectGetterMapping('getCustomernumber'))->then(new IntegerMapping),
-  'firstName'      => new ObjectGetterMapping('getFirstName'),
-  'lastName'       => new ObjectGetterMapping('getLastName'),
-  'invoices'       => (new ObjectGetterMapping('getInvoices'))->then(new ListMapping(new ObjectMapping([
-    'invoiceNumber' => (new ObjectGetterMapping('getInvoiceNumber'))->then(new IntegerMapping),
-    'price'         => (new ObjectGetterMapping('getPrice'))->then(new FloatMapping)
+$m = new MappingBuilder();
+$customerMapping = $m->struct([
+  'customerNumber' => $m->getter('getCustomernumber')->then($m->toInteger()),
+  'firstName'      => $m->getter('getFirstName'),
+  'lastName'       => $m->getter('getLastName'),
+  'invoices'       => $m->getter('getInvoices')->then($m->listing($m->struct([
+    'invoiceNumber' => $m->getter('getInvoiceNumber')->then($m->toInteger()),
+    'price'         => $m->getter('getPrice')->then($m->toInteger())
   ])))
 ]);
 
-$addressCustomerMapping = new ObjectMapping([
-  'address' => (new ObjectGetterMapping('getAddress'))->then(new ObjectMapping([
-    'street'      => new ObjectGetterMapping('getAddress'),
-    'housenumber' => new ObjectGetterMapping('getHouseNumber'),
-    'country'     => new ObjectGetterMapping('getCountry')
-  ]))
+$addressCustomerMapping = $m->struct([
+  'address' => $m->getterAndStruct('getAddress', [
+    'street'      => $m->getter('getAddress'),
+    'housenumber' => $m->getter('getHouseNumber'),
+    'country'     => $m->getter('getCountry')
+  ])
 ]);
 
-$combinedCustomerMapping = $customerMapping->merge($addressCustomerMapping);
-$filteredCustomerMapping = $combinedCustomerMapping->filter($userFilter);
-
-$customerJson = $filteredCustomerMapping->map($customer);
+$customerJson = $customerMapping
+  ->merge($addressCustomerMapping)
+  ->filter($userFilter)
+  ->map($customer);
 ```
