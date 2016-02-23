@@ -1,5 +1,7 @@
 # Object-to-JSON mapping framework for PHP
 
+[![Build Status](https://travis-ci.org/mittwald/php-jsonmapping.svg?branch=master)](https://travis-ci.org/mittwald/php-jsonmapping)
+
 This package contains a framework for mapping PHP objects into arbitrary JSON
 structures.
 
