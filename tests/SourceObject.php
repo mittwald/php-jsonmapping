@@ -3,6 +3,7 @@ namespace Mw\JsonMapping\Tests;
 
 /**
  * Class TestObject
+ *
  * @package Mw\JsonMapping\Tests
  */
 class SourceObject
@@ -21,7 +22,6 @@ class SourceObject
     protected $title = "Example Object";
 
 
-
     /**
      * @return int
      */
@@ -29,4 +29,5 @@ class SourceObject
     {
         return $this->uid;
     }
+
 }
