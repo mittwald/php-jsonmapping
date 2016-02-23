@@ -1,5 +1,5 @@
 {
-  "name": "mittwald/psr7-validation",
+  "name": "mittwald/php-jsonmapping",
   "description": "Library for mapping PHP objects to JSON structures",
   "type": "library",
   "license": "MIT",
