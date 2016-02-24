@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sgieselmann
- * Date: 24.02.16
- * Time: 10:55
- */
-
 namespace Mw\JsonMapping;
 
 
