@@ -39,4 +39,14 @@ class ObjectGetterMappingTest extends \PHPUnit_Framework_TestCase
         $sut          = new ObjectGetterMapping('getFoo');
         $this->assertSame(NULL, $sut->map($sourceObject));
     }
+
+
+
+    public function testGetterWithArguments()
+    {
+        $sourceObject = $this->prophesize('Mw\JsonMapping\Tests\SourceObject');
+        $sourceObject->getUid(123)->willReturn(123);
+        $sut = new ObjectGetterMapping('getUid', 123);
+        $this->assertSame(123, $sut->map($sourceObject->reveal()));
+    }
 }
