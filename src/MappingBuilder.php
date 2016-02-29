@@ -72,4 +72,13 @@ class MappingBuilder
     {
         return $this->getter($getter)->then($this->listing($inner));
     }
+
+    /**
+     * @param callable $cb
+     * @return CallbackMapping
+     */
+    public function callback(callable $cb)
+    {
+        return new CallbackMapping($cb);
+    }
 }
