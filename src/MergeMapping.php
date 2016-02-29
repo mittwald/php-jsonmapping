@@ -7,7 +7,7 @@ class MergeMapping extends ObjectMapping
 
 
     /**
-     * @var ObjectMapping[]
+     * @var MappingInterface[]
      */
     private $innerMappings;
 
@@ -16,7 +16,7 @@ class MergeMapping extends ObjectMapping
     /**
      * MergeMapping constructor.
      *
-     * @param ObjectMapping[] ...$innerMappings
+     * @param MappingInterface[] ...$innerMappings
      */
     public function __construct(...$innerMappings)
     {

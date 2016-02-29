@@ -76,10 +76,10 @@ class ObjectMapping extends AbstractMapping
     }
 
     /**
-     * @param ObjectMapping $merge
+     * @param MappingInterface $merge
      * @return MergeMapping
      */
-    public function merge(ObjectMapping $merge)
+    public function merge(MappingInterface $merge)
     {
         return new MergeMapping($this, $merge);
     }
