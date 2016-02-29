@@ -36,11 +36,12 @@ class MappingBuilder
 
     /**
      * @param string $getter
+     * @param array  $args
      * @return ObjectGetterMapping
      */
-    public function getter($getter)
+    public function getter($getter, ...$args)
     {
-        return new ObjectGetterMapping($getter);
+        return new ObjectGetterMapping($getter, ...$args);
     }
 
     /**
