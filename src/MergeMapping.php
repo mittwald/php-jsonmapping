@@ -74,10 +74,10 @@ class MergeMapping extends ObjectMapping
 
 
     /**
-     * @param ObjectMapping $merge
+     * @param MappingInterface $merge
      * @return MergeMapping
      */
-    public function merge(ObjectMapping $merge)
+    public function merge(MappingInterface $merge)
     {
         $objectMappings = $this->innerMappings;
         $objectMappings[] = $merge;
