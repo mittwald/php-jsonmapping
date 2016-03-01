@@ -7,7 +7,7 @@ namespace Mw\JsonMapping;
  *
  * @package Mw\JsonMapping
  */
-class CallbackMapping implements MappingInterface
+class CallbackMapping extends AbstractMapping
 {
 
     /**
