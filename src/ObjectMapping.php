@@ -59,12 +59,17 @@ class ObjectMapping extends AbstractMapping
     }
 
     /**
-     * @param array $fieldNames
+     * @param array|FilterSet $filter
      * @return ObjectMapping
      */
-    public function filter(array $fieldNames)
+    public function filter($filter)
     {
         $newMapping = [];
+
+        $fieldNames = ($filter instanceof FilterSet) ? $filter->fields() : $filter;
+        if (count($fieldNames) === 0) {
+            return $this;
+        }
 
         foreach ($fieldNames as $fieldName) {
             if (isset($this->config[$fieldName])) {

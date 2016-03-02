@@ -45,15 +45,15 @@ class MergeMapping extends ObjectMapping
 
 
     /**
-     * @param array $fieldNames
+     * @param array|FilterSet $filter
      * @return MergeMapping
      */
-    public function filter(array $fieldNames)
+    public function filter($filter)
     {
         $newInnerMappings = [];
         foreach ($this->innerMappings as $innerMapping)
         {
-            $newInnerMappings[] = $innerMapping->filter($fieldNames);
+            $newInnerMappings[] = $innerMapping->filter($filter);
         }
         return new MergeMapping(...$newInnerMappings);
     }

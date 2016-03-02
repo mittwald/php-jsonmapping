@@ -119,6 +119,24 @@ $customerMapping = new ObjectMapping([
 $filteredCustomerMapping = $customerMapping->filter('firstName');
 ```
 
+Filters can also be nested, using the `FilterSet` class:
+
+```php
+$filter = new FilterSet(
+  'customerNumber',
+  'address.country'
+);
+
+$customerMapping = $m->struct([
+  'customerNumber' => $m->getter('getCustomernumber')->then($m->toInteger()),
+  'address'        => $m->getterAndStruct('getAddress', [
+    'street'      => $m->getter('getAddress'),
+    'housenumber' => $m->getter('getHouseNumber'),
+    'country'     => $m->getter('getCountry')
+  ])->filter($filter->subFilter('address'))
+])->filter($filter);
+```
+
 ### Merging
 
 Also, object mappings can be merged together:

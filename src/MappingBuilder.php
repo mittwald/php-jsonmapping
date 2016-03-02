@@ -81,4 +81,13 @@ class MappingBuilder
     {
         return new CallbackMapping($cb);
     }
+
+    /**
+     * @param array|FilterSet $filter
+     * @return SelectMapping
+     */
+    public function select($filter)
+    {
+        return new SelectMapping($filter);
+    }
 }
