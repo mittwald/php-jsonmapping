@@ -26,6 +26,14 @@ class MappingBuilder
     }
 
     /**
+     * @return BooleanMapping
+     */
+    public function toBoolean()
+    {
+        return new BooleanMapping();
+    }
+
+    /**
      * @param array $config
      * @return ObjectMapping
      */
