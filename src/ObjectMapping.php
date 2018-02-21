@@ -41,7 +41,7 @@ class ObjectMapping extends AbstractMapping
             } else if (is_callable($subMapping)) {
                 $mapped = $subMapping($value);
             } else if (is_array($subMapping)) {
-                $subMapping = new static($subMapping);
+                $subMapping = new ObjectMapping($subMapping);
                 $mapped = $subMapping->map($value);
             }
             $result[$key] = $mapped;
